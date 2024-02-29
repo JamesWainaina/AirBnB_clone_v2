@@ -6,19 +6,19 @@ from datetime import datetime
 
 env.hosts = ['35.168.3.210', '52.91.135.13']
 env.user = 'ubuntu'
-env.key_filename = '/home/james/.ssh/id_rsa'
 
 
-def do_pack():
-    """Creates a compressed archive of the web_static folder"""
-    try:
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        file_name = "versions/web_static_{}.tgz".format(timestamp)
-        local("mkdir -p versions")
-        local("tar -cvzf {} web_static".format(file_name))
-        return file_name
-    except Exception as e:
-        return None
+
+# def do_pack():
+#     """Creates a compressed archive of the web_static folder"""
+#     try:
+#         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+#         file_name = "versions/web_static_{}.tgz".format(timestamp)
+#         local("mkdir -p versions")
+#         local("tar -cvzf {} web_static".format(file_name))
+#         return file_name
+#     except Exception as e:
+#         return None
 
 
 def do_deploy(archive_path):
@@ -52,10 +52,10 @@ def do_deploy(archive_path):
     
 
 
-if __name__ == "__main__":
-    archive_path = do_pack()
-    if archive_path:
-        result = do_deploy(archive_path)
-        print(result)
-    else:
-        print("Packaging failed.")
+# if __name__ == "__main__":
+#     archive_path = do_pack()
+#     if archive_path:
+#         result = do_deploy(archive_path)
+#         print(result)
+#     else:
+#         print("Packaging failed.")
